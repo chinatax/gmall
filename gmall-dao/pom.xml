@@ -11,6 +11,14 @@
     <groupId>cn.chinatax.josewu</groupId>
     <artifactId>gmall-dao</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <dependencies>
+        <!-- 添加 demo-base 的依赖 -->
+        <dependency>
+            <groupId>cn.chinatax.josewu</groupId>
+            <artifactId>gmall-base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>

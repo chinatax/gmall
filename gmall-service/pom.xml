@@ -15,5 +15,13 @@
 
     <name>gmall-service</name>
     <description>Service project for Spring Boot</description>
-
+    <dependencies>
+        <!-- 添加 demo-dao 的依赖 -->
+        <dependency>
+            <groupId>cn.chinatax.josewu</groupId>
+            <artifactId>gmall-dao</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

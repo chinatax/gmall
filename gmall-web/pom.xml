@@ -17,6 +17,13 @@
     <description>Web project for Spring Boot</description>
 
     <dependencies>
+            <!-- 添加 demo-service 的依赖 -->
+            <dependency>
+                <groupId>cn.chinatax.josewu</groupId>
+                <artifactId>gmall-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
