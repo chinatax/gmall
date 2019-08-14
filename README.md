@@ -1,1 +1,2 @@
-# gmall
+# gmall 从gitHub上fetch下来后
+idea中建立springboot工程gmall，再次push到gitHub上
