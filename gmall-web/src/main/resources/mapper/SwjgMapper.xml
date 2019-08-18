@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.chinatax.josewu.mapper.SwjgMapper" >
+  <resultMap id="BaseResultMap" type="cn.chinatax.josewu.base.bean.Swjg" >
+    <constructor >
+      <idArg column="ID" jdbcType="NUMERIC" javaType="java.lang.Short" />
+      <arg column="SWJG_DM" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="SWJG_MC" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SWJG_DM, SWJG_MC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from DM_GY_SWJG
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from DM_GY_SWJG
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="cn.chinatax.josewu.base.bean.Swjg" >
+    insert into DM_GY_SWJG (ID, SWJG_DM, SWJG_MC
+      )
+    values (#{id,jdbcType=NUMERIC}, #{swjgDm,jdbcType=CHAR}, #{swjgMc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.chinatax.josewu.base.bean.Swjg" >
+    insert into DM_GY_SWJG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="swjgDm != null" >
+        SWJG_DM,
+      </if>
+      <if test="swjgMc != null" >
+        SWJG_MC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="swjgDm != null" >
+        #{swjgDm,jdbcType=CHAR},
+      </if>
+      <if test="swjgMc != null" >
+        #{swjgMc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.chinatax.josewu.base.bean.Swjg" >
+    update DM_GY_SWJG
+    <set >
+      <if test="swjgDm != null" >
+        SWJG_DM = #{swjgDm,jdbcType=CHAR},
+      </if>
+      <if test="swjgMc != null" >
+        SWJG_MC = #{swjgMc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.chinatax.josewu.base.bean.Swjg" >
+    update DM_GY_SWJG
+    set SWJG_DM = #{swjgDm,jdbcType=CHAR},
+      SWJG_MC = #{swjgMc,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+</mapper>
