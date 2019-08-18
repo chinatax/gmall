@@ -1,15 +1,18 @@
 package cn.chinatax.josewu.gmallweb.controller;
 
 
+import cn.chinatax.josewu.gmallservice.impl.RedisServiceImpl;
 import cn.chinatax.josewu.gmallweb.model.ExportHydmModel;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 
 import org.jboss.logging.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
+
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -31,7 +36,14 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("easyExcelUtil")
 public class EasyExcelUtilController extends EasyExcelBaseController {
 
+    @Autowired
+    private RedisServiceImpl redisServece;
+
+
     protected List<ExportHydmModel> list = new ArrayList<ExportHydmModel>();
+
+
+    private String keyString;
 
     //private static final Logger log = LoggerFactory.getLogger(EasyExcelUtilController.class);
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(EasyExcelUtilController.class);
@@ -43,7 +55,9 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
     public Object getExportData(HttpServletResponse response){
         logger.info("这里是getExportData!");
         try {
-            ExcelUtil.writeExcel(response,list,"行业代码","行业代码大全", ExcelTypeEnum.XLSX,ExportHydmModel.class);
+            String jsonString = redisServece.getString(keyString);
+            List<ExportHydmModel> hydmLists = JSON.parseObject(jsonString,new TypeReference<List<ExportHydmModel>>(){});
+            ExcelUtil.writeExcel(response,hydmLists,"行业代码","行业代码大全", ExcelTypeEnum.XLSX,ExportHydmModel.class);
         } catch (ExcelException e) {
 
 
@@ -70,6 +84,10 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
             //List<ExportHydmModel> list = ExcelUtil.readExcel(files.get(0),ExportHydmModel.class);
             list = ExcelUtil.readExcel(files.get(0),ExportHydmModel.class);
             String jsonString = JSON.toJSONString(list, SerializerFeature.PrettyFormat);
+
+            String oldName = files.get(0).getOriginalFilename();
+            keyString = UUID.randomUUID().toString()+oldName.substring(oldName.lastIndexOf("."));
+            redisServece.setString(keyString, jsonString);
 
             //下面注释掉的代码是
             //List<ExportHydmModel> hydmLists = JSON.parseObject(jsonString,new TypeReference<List<ExportHydmModel>>(){});

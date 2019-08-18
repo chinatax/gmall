@@ -10,3 +10,4 @@ index 测试页面
 本次更新，基本框架确定了，功能添加了oracle jdbcTemplate 和Test测试出错等问题，比较满意
 增加了redisCache功能
 添加了excel导入导出功能
+将导入的excel文件保存在redis中，这波操作完美。
