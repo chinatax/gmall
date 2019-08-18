@@ -3,12 +3,12 @@
 <head lang="en">
 	<title>Spring Boot Demo - FreeMarker</title>
 	
-	<link href="/css/index.css" rel="stylesheet" />
+	<link href="/static/css/index.css" rel="stylesheet" />
 	
 </head>
 <body>
 	<center>
-		<img src="/images/logo.png" />
+		<img src="/static/images/logo.png" />
 		<h1 id="title">${title}</h1>
 	</center>
 	

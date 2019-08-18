@@ -19,18 +19,4 @@
     <description>Base project for Spring Boot</description>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <!-- 消除 Java 的冗长 ，优雅的编程 -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
-
-    </dependencies>
-
 </project>
