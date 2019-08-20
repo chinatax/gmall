@@ -53,14 +53,12 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
     @GetMapping("getExportData")
     @ResponseBody
     public Object getExportData(HttpServletResponse response){
-        logger.info("这里是getExportData!");
+        //logger.info("这里是getExportData!");
         try {
             String jsonString = redisServece.getString(keyString);
             List<ExportHydmModel> hydmLists = JSON.parseObject(jsonString,new TypeReference<List<ExportHydmModel>>(){});
             ExcelUtil.writeExcel(response,hydmLists,"行业代码","行业代码大全", ExcelTypeEnum.XLSX,ExportHydmModel.class);
         } catch (ExcelException e) {
-
-
             log.info(e);
         }
         return success("导出成功");
@@ -70,7 +68,7 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
     @ResponseBody
     public Object importExcel(MultipartHttpServletRequest request){
 
-        logger.info("进入了importExcel");
+        //logger.info("进入了importExcel");
 
         Iterator<String> itr = request.getFileNames();
         String uploadedFile = itr.next();
@@ -86,7 +84,8 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
             String jsonString = JSON.toJSONString(list, SerializerFeature.PrettyFormat);
 
             String oldName = files.get(0).getOriginalFilename();
-            keyString = UUID.randomUUID().toString()+oldName.substring(oldName.lastIndexOf("."));
+            keyString = "hydm"+UUID.randomUUID().toString()+oldName.substring(oldName.lastIndexOf("."));
+            //keyString = "hydm*";
             redisServece.setString(keyString, jsonString);
 
             //下面注释掉的代码是

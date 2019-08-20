@@ -6,6 +6,7 @@ import cn.chinatax.josewu.gmallservice.HymcService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -13,7 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class GmallWebApplicationTests {
 
-
+    public static void main(String[] args) {
+        SpringApplication.run(GmallWebApplicationTests.class, args);
+    }
 
 
 }

@@ -1,6 +1,5 @@
 package cn.chinatax.josewu.gmallservice;
 
-import cn.chinatax.josewu.base.bean.Hydm;
 import cn.chinatax.josewu.base.bean.Swjg;
 
 public interface SwjgCacheService {

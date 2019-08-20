@@ -2,13 +2,11 @@ package cn.chinatax.josewu.gmallweb.controller;
 
 import java.util.HashMap;
 
-import cn.chinatax.josewu.base.bean.Hydm;
 import cn.chinatax.josewu.base.bean.Swjg;
 import cn.chinatax.josewu.gmallservice.SwjgCacheService;
 import cn.chinatax.josewu.gmallservice.impl.RedisServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

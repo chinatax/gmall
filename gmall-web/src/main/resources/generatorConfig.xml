@@ -64,18 +64,23 @@
             <!-- 针对 oracle 数据库的一个配置，是否把 schema 作为字包名 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-
-         <table tableName="dm_gy_swjg" domainObjectName="Swjg"
-                enableCountByExample="false" enableUpdateByExample="false"
-                enableDeleteByExample="false" enableSelectByExample="false"
-                selectByExampleQueryId="false">
-         </table>
         <!--
-              <table tableName="dm_hy" domainObjectName="Dmhy"
-                     enableCountByExample="false" enableUpdateByExample="false"
-                     enableDeleteByExample="false" enableSelectByExample="false"
-                     selectByExampleQueryId="false">
-              </table>
-     -->
+                        <table tableName="dm_gy_swjg" domainObjectName="Swjg"
+                               enableCountByExample="false" enableUpdateByExample="false"
+                               enableDeleteByExample="false" enableSelectByExample="false"
+                               selectByExampleQueryId="false">
+                        </table>
+
+                                    <table tableName="dm_hy" domainObjectName="Dmhy"
+                                           enableCountByExample="false" enableUpdateByExample="false"
+                                           enableDeleteByExample="false" enableSelectByExample="false"
+                                           selectByExampleQueryId="false">
+                                    </table>
+                           -->
+        <table tableName="dm_gy_hy" domainObjectName="Hydm"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
      </context>
  </generatorConfiguration>

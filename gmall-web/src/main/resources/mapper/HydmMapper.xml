@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.chinatax.josewu.mapper.HydmMapper" >
+  <resultMap id="BaseResultMap" type="cn.chinatax.josewu.base.bean.Hydm" >
+    <constructor >
+      <idArg column="ID" jdbcType="NUMERIC" javaType="java.lang.Short" />
+      <arg column="HY_DM" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="HY_MC" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MLBZ" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="DLBZ" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="ZLBZ" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="XLBZ" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="XYBZ" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="YXBZ" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, HY_DM, HY_MC, MLBZ, DLBZ, ZLBZ, XLBZ, XYBZ, YXBZ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from DM_GY_HY
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from DM_GY_HY
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="cn.chinatax.josewu.base.bean.Hydm" >
+    insert into DM_GY_HY (ID, HY_DM, HY_MC, 
+      MLBZ, DLBZ, ZLBZ, XLBZ, 
+      XYBZ, YXBZ)
+    values (#{id,jdbcType=NUMERIC}, #{hyDm,jdbcType=VARCHAR}, #{hyMc,jdbcType=VARCHAR}, 
+      #{mlbz,jdbcType=CHAR}, #{dlbz,jdbcType=CHAR}, #{zlbz,jdbcType=CHAR}, #{xlbz,jdbcType=CHAR}, 
+      #{xybz,jdbcType=CHAR}, #{yxbz,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.chinatax.josewu.base.bean.Hydm" >
+    insert into DM_GY_HY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="hyDm != null" >
+        HY_DM,
+      </if>
+      <if test="hyMc != null" >
+        HY_MC,
+      </if>
+      <if test="mlbz != null" >
+        MLBZ,
+      </if>
+      <if test="dlbz != null" >
+        DLBZ,
+      </if>
+      <if test="zlbz != null" >
+        ZLBZ,
+      </if>
+      <if test="xlbz != null" >
+        XLBZ,
+      </if>
+      <if test="xybz != null" >
+        XYBZ,
+      </if>
+      <if test="yxbz != null" >
+        YXBZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="hyDm != null" >
+        #{hyDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hyMc != null" >
+        #{hyMc,jdbcType=VARCHAR},
+      </if>
+      <if test="mlbz != null" >
+        #{mlbz,jdbcType=CHAR},
+      </if>
+      <if test="dlbz != null" >
+        #{dlbz,jdbcType=CHAR},
+      </if>
+      <if test="zlbz != null" >
+        #{zlbz,jdbcType=CHAR},
+      </if>
+      <if test="xlbz != null" >
+        #{xlbz,jdbcType=CHAR},
+      </if>
+      <if test="xybz != null" >
+        #{xybz,jdbcType=CHAR},
+      </if>
+      <if test="yxbz != null" >
+        #{yxbz,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.chinatax.josewu.base.bean.Hydm" >
+    update DM_GY_HY
+    <set >
+      <if test="hyDm != null" >
+        HY_DM = #{hyDm,jdbcType=VARCHAR},
+      </if>
+      <if test="hyMc != null" >
+        HY_MC = #{hyMc,jdbcType=VARCHAR},
+      </if>
+      <if test="mlbz != null" >
+        MLBZ = #{mlbz,jdbcType=CHAR},
+      </if>
+      <if test="dlbz != null" >
+        DLBZ = #{dlbz,jdbcType=CHAR},
+      </if>
+      <if test="zlbz != null" >
+        ZLBZ = #{zlbz,jdbcType=CHAR},
+      </if>
+      <if test="xlbz != null" >
+        XLBZ = #{xlbz,jdbcType=CHAR},
+      </if>
+      <if test="xybz != null" >
+        XYBZ = #{xybz,jdbcType=CHAR},
+      </if>
+      <if test="yxbz != null" >
+        YXBZ = #{yxbz,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.chinatax.josewu.base.bean.Hydm" >
+    update DM_GY_HY
+    set HY_DM = #{hyDm,jdbcType=VARCHAR},
+      HY_MC = #{hyMc,jdbcType=VARCHAR},
+      MLBZ = #{mlbz,jdbcType=CHAR},
+      DLBZ = #{dlbz,jdbcType=CHAR},
+      ZLBZ = #{zlbz,jdbcType=CHAR},
+      XLBZ = #{xlbz,jdbcType=CHAR},
+      XYBZ = #{xybz,jdbcType=CHAR},
+      YXBZ = #{yxbz,jdbcType=CHAR}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+</mapper>
