@@ -48,20 +48,20 @@ public class HydmMybatisController extends EasyExcelBaseController{
 
         try{
             // redis实现模糊查找
-            String  prefix = "hydm*";        //这个*一定要加，否则无法模糊查询
-            String  jsonString = redisServece.getString(prefix);
+            String  keys = "hydm";        //这个*一定要加，否则无法模糊查询
+            String  keyString = redisServece.getString(keys);
+            String  jsonString = redisServece.getString(keyString);
             List<Hydm> hydmLists = JSON.parseObject(jsonString,new TypeReference<List<Hydm>>(){});
             for(Hydm hydm : hydmLists){
-                    //log.info("ggggggggggggg====>"+hydm.getHyMc());
                     short  shortId = Short.parseShort(UUIDNumber.getShortGuid());
-                    log.info("sssssssss====>"+shortId);
                     hydm.setId(shortId);
                     hydmMapper.insert(hydm);
             }
+            return success("导出成功");
         }catch(Exception e) {
             log.info(e.toString());
         }
-        return success("导出成功");
+        return fail( "导出失败");
     }
 
     @GetMapping("/test")

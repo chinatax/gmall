@@ -17,7 +17,7 @@ public class ExcelController {
     @RequestMapping(value = "excel")
     public String index(ModelMap map) {
 
-        logger.info("这里是excelController!");
+        //logger.info("这里是excelController!");
 
         map.put("title","Hello World!");
         return "excel";

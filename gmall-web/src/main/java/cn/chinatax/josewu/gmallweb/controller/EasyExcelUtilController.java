@@ -84,15 +84,10 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
             String jsonString = JSON.toJSONString(list, SerializerFeature.PrettyFormat);
 
             String oldName = files.get(0).getOriginalFilename();
-            keyString = "hydm"+UUID.randomUUID().toString()+oldName.substring(oldName.lastIndexOf("."));
-            //keyString = "hydm*";
+            keyString = UUID.randomUUID().toString()+oldName.substring(oldName.lastIndexOf("."));
+
             redisServece.setString(keyString, jsonString);
-
-            //下面注释掉的代码是
-            //List<ExportHydmModel> hydmLists = JSON.parseObject(jsonString,new TypeReference<List<ExportHydmModel>>(){});
-
-            //System.out.println("************"+hydmLists.size());
-
+            redisServece.setString("hydm",keyString);
 
             return success(jsonString);
 
