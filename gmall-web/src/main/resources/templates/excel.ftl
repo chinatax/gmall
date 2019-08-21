@@ -25,5 +25,8 @@
     });
 </script>
 
+<div>
+    <a href="/qyyl/qyylExportData" target="_blank">养老保险导出测试</a>
+</div>
 </body>
 </html>
