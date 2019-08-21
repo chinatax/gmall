@@ -76,11 +76,18 @@
                                            enableDeleteByExample="false" enableSelectByExample="false"
                                            selectByExampleQueryId="false">
                                     </table>
-                           -->
+
         <table tableName="dm_gy_hy" domainObjectName="Hydm"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
+
+        <table tableName="sbf_zs_zsxx" domainObjectName="Zsxx"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+         -->
      </context>
  </generatorConfiguration>

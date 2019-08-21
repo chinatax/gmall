@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.chinatax.josewu.mapper.ZsxxMapper" >
+  <resultMap id="BaseResultMap" type="cn.chinatax.josewu.base.bean.Zsxx" >
+    <constructor >
+      <idArg column="ID" jdbcType="NUMERIC" javaType="java.lang.Long" />
+      <arg column="XH" jdbcType="NUMERIC" javaType="java.lang.Short" />
+      <arg column="DQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="JFRS_SNTQ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="JFJS_SNTQ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="JFJE_SNTQ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="JFRS_BQ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="JFJS_BQ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="JFJE_BQ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="XJ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="JVJF" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="SPGZKJJFE" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="XSJFZCHS" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, XH, DQ, JFRS_SNTQ, JFJS_SNTQ, JFJE_SNTQ, JFRS_BQ, JFJS_BQ, JFJE_BQ, XJ, JVJF, 
+    SPGZKJJFE, XSJFZCHS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from SBF_ZS_ZSXX
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from SBF_ZS_ZSXX
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="cn.chinatax.josewu.base.bean.Zsxx" >
+    insert into SBF_ZS_ZSXX (ID, XH, DQ, JFRS_SNTQ, 
+      JFJS_SNTQ, JFJE_SNTQ, JFRS_BQ, 
+      JFJS_BQ, JFJE_BQ, XJ, 
+      JVJF, SPGZKJJFE, XSJFZCHS
+      )
+    values (#{id,jdbcType=NUMERIC}, #{xh,jdbcType=NUMERIC}, #{dq,jdbcType=VARCHAR}, #{jfrsSntq,jdbcType=NUMERIC}, 
+      #{jfjsSntq,jdbcType=NUMERIC}, #{jfjeSntq,jdbcType=NUMERIC}, #{jfrsBq,jdbcType=NUMERIC}, 
+      #{jfjsBq,jdbcType=NUMERIC}, #{jfjeBq,jdbcType=NUMERIC}, #{xj,jdbcType=NUMERIC}, 
+      #{jvjf,jdbcType=NUMERIC}, #{spgzkjjfe,jdbcType=NUMERIC}, #{xsjfzchs,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.chinatax.josewu.base.bean.Zsxx" >
+    insert into SBF_ZS_ZSXX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+      <if test="dq != null" >
+        DQ,
+      </if>
+      <if test="jfrsSntq != null" >
+        JFRS_SNTQ,
+      </if>
+      <if test="jfjsSntq != null" >
+        JFJS_SNTQ,
+      </if>
+      <if test="jfjeSntq != null" >
+        JFJE_SNTQ,
+      </if>
+      <if test="jfrsBq != null" >
+        JFRS_BQ,
+      </if>
+      <if test="jfjsBq != null" >
+        JFJS_BQ,
+      </if>
+      <if test="jfjeBq != null" >
+        JFJE_BQ,
+      </if>
+      <if test="xj != null" >
+        XJ,
+      </if>
+      <if test="jvjf != null" >
+        JVJF,
+      </if>
+      <if test="spgzkjjfe != null" >
+        SPGZKJJFE,
+      </if>
+      <if test="xsjfzchs != null" >
+        XSJFZCHS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=NUMERIC},
+      </if>
+      <if test="dq != null" >
+        #{dq,jdbcType=VARCHAR},
+      </if>
+      <if test="jfrsSntq != null" >
+        #{jfrsSntq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjsSntq != null" >
+        #{jfjsSntq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjeSntq != null" >
+        #{jfjeSntq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfrsBq != null" >
+        #{jfrsBq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjsBq != null" >
+        #{jfjsBq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjeBq != null" >
+        #{jfjeBq,jdbcType=NUMERIC},
+      </if>
+      <if test="xj != null" >
+        #{xj,jdbcType=NUMERIC},
+      </if>
+      <if test="jvjf != null" >
+        #{jvjf,jdbcType=NUMERIC},
+      </if>
+      <if test="spgzkjjfe != null" >
+        #{spgzkjjfe,jdbcType=NUMERIC},
+      </if>
+      <if test="xsjfzchs != null" >
+        #{xsjfzchs,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.chinatax.josewu.base.bean.Zsxx" >
+    update SBF_ZS_ZSXX
+    <set >
+      <if test="xh != null" >
+        XH = #{xh,jdbcType=NUMERIC},
+      </if>
+      <if test="dq != null" >
+        DQ = #{dq,jdbcType=VARCHAR},
+      </if>
+      <if test="jfrsSntq != null" >
+        JFRS_SNTQ = #{jfrsSntq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjsSntq != null" >
+        JFJS_SNTQ = #{jfjsSntq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjeSntq != null" >
+        JFJE_SNTQ = #{jfjeSntq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfrsBq != null" >
+        JFRS_BQ = #{jfrsBq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjsBq != null" >
+        JFJS_BQ = #{jfjsBq,jdbcType=NUMERIC},
+      </if>
+      <if test="jfjeBq != null" >
+        JFJE_BQ = #{jfjeBq,jdbcType=NUMERIC},
+      </if>
+      <if test="xj != null" >
+        XJ = #{xj,jdbcType=NUMERIC},
+      </if>
+      <if test="jvjf != null" >
+        JVJF = #{jvjf,jdbcType=NUMERIC},
+      </if>
+      <if test="spgzkjjfe != null" >
+        SPGZKJJFE = #{spgzkjjfe,jdbcType=NUMERIC},
+      </if>
+      <if test="xsjfzchs != null" >
+        XSJFZCHS = #{xsjfzchs,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.chinatax.josewu.base.bean.Zsxx" >
+    update SBF_ZS_ZSXX
+    set XH = #{xh,jdbcType=NUMERIC},
+      DQ = #{dq,jdbcType=VARCHAR},
+      JFRS_SNTQ = #{jfrsSntq,jdbcType=NUMERIC},
+      JFJS_SNTQ = #{jfjsSntq,jdbcType=NUMERIC},
+      JFJE_SNTQ = #{jfjeSntq,jdbcType=NUMERIC},
+      JFRS_BQ = #{jfrsBq,jdbcType=NUMERIC},
+      JFJS_BQ = #{jfjsBq,jdbcType=NUMERIC},
+      JFJE_BQ = #{jfjeBq,jdbcType=NUMERIC},
+      XJ = #{xj,jdbcType=NUMERIC},
+      JVJF = #{jvjf,jdbcType=NUMERIC},
+      SPGZKJJFE = #{spgzkjjfe,jdbcType=NUMERIC},
+      XSJFZCHS = #{xsjfzchs,jdbcType=NUMERIC}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+</mapper>

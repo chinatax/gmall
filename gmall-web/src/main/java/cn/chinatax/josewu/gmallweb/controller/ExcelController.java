@@ -22,7 +22,14 @@ public class ExcelController {
         map.put("title","Hello World!");
         return "excel";
     }
+    @RequestMapping(value = "excelQyyl")
+    public String qyylIndexß(ModelMap map) {
 
+        //logger.info("这里是excelController!");
+
+        map.put("title","Hello World!企业职工基本养老保险");
+        return "excelQyyl";
+    }
     @RequestMapping(value = "error")
     public String error(ModelMap map) {
 

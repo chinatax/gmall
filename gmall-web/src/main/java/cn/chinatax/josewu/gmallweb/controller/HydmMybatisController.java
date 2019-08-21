@@ -70,23 +70,4 @@ public class HydmMybatisController extends EasyExcelBaseController{
     }
 
 
-    // 正常情况
-    @GetMapping("/byid")
-    public Map<String, Object> selectByUuid() {
-
-        Hydm hydm = new Hydm();
-        RowMapper<Hydm> mapper = new BeanPropertyRowMapper<>(Hydm.class);
-        String sql = "select id,hydm,hymc from hydm where id=?";
-        hydm = jdbcTemplate.queryForObject(sql,mapper,2);
-        //hydm = hymcService.getHymcList();
-        Map<String, Object> map = new HashMap<String, Object>();
-        //map.put("hydm",hydm.getHydm());
-        //map.put("hymc",hydm.getHymc());
-        map.put("title","hello 吴虎");
-
-        return map;
-    }
-
-
-
 }

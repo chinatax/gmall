@@ -7,11 +7,8 @@ import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-
 import org.jboss.logging.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,9 +42,6 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
 
     private String keyString;
 
-    //private static final Logger log = LoggerFactory.getLogger(EasyExcelUtilController.class);
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(EasyExcelUtilController.class);
-
     Logger log;
 
     @GetMapping("getExportData")
@@ -68,29 +62,21 @@ public class EasyExcelUtilController extends EasyExcelBaseController {
     @ResponseBody
     public Object importExcel(MultipartHttpServletRequest request){
 
-        //logger.info("进入了importExcel");
-
         Iterator<String> itr = request.getFileNames();
         String uploadedFile = itr.next();
         List<MultipartFile> files = request.getFiles(uploadedFile);
-
-
         if (CollectionUtils.isEmpty(files)) {
             return fail("请选择文件！");
         }
         try {
-            //List<ExportHydmModel> list = ExcelUtil.readExcel(files.get(0),ExportHydmModel.class);
             list = ExcelUtil.readExcel(files.get(0),ExportHydmModel.class);
             String jsonString = JSON.toJSONString(list, SerializerFeature.PrettyFormat);
-
             String oldName = files.get(0).getOriginalFilename();
             keyString = UUID.randomUUID().toString()+oldName.substring(oldName.lastIndexOf("."));
-
             redisServece.setString(keyString, jsonString);
             redisServece.setString("hydm",keyString);
 
             return success(jsonString);
-
         } catch (ExcelException e) {
             log.info(e);
             return fail(""+e.getMessage());

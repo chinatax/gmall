@@ -3,7 +3,7 @@
 <body>
 <H1>Hello,World!</H1>
 <div>
-    <a href="/easyExcelUtil/getExportData" target="_blank">EasyExcel导出测试</a>
+    <a href="/qyyl/exportExcel" target="_blank">EasyExcel导出测试</a>
 </div>
 <div style="position: relative;">
     <input style="width: 68px; position: absolute;opacity: 0;" id="importExcel" type="file" accept=".xlsx">
@@ -17,16 +17,15 @@
 <script>
     $('#importExcel').fileupload({
 
-        url: "http://127.0.0.1:8080/easyExcelUtil/importExcel",
+        url: "http://127.0.0.1:8080/qyyl/importExcel",
         dataType: 'json',
         success: function (data) {
             layer.msg(data.msg);
         }
     });
 </script>
-
 <div>
-    <a href="/qyyl/exportExcel" target="_blank">养老保险导出测试</a>
+    <a href="/ylbx/insertYlbx" target="_blank">企业养老保险写入数据库</a>
 </div>
 </body>
 </html>
