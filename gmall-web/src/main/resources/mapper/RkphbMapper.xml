@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.chinatax.josewu.mapper.RkphbMapper" >
+  <resultMap id="BaseResultMap" type="cn.chinatax.josewu.base.bean.Rkphb" >
+    <constructor >
+      <idArg column="ID" jdbcType="NUMERIC" javaType="java.lang.Long" />
+      <arg column="XH" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DJXH" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="NSRSBH" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="NSRMC" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="HJ" jdbcType="NUMERIC" javaType="java.math.BigDecimal" />
+      <arg column="TDATE" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, XH, DQ, DJXH, NSRSBH, NSRMC, HJ, TDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZS_RKPHB
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ZS_RKPHB
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="cn.chinatax.josewu.base.bean.Rkphb" >
+    insert into ZS_RKPHB (ID, XH, DQ, DJXH, 
+      NSRSBH, NSRMC, HJ, 
+      TDATE)
+    values (#{id,jdbcType=NUMERIC}, #{xh,jdbcType=VARCHAR}, #{dq,jdbcType=VARCHAR}, #{djxh,jdbcType=VARCHAR}, 
+      #{nsrsbh,jdbcType=VARCHAR}, #{nsrmc,jdbcType=VARCHAR}, #{hj,jdbcType=NUMERIC}, 
+      #{tdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.chinatax.josewu.base.bean.Rkphb" >
+    insert into ZS_RKPHB
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="xh != null" >
+        XH,
+      </if>
+      <if test="dq != null" >
+        DQ,
+      </if>
+      <if test="djxh != null" >
+        DJXH,
+      </if>
+      <if test="nsrsbh != null" >
+        NSRSBH,
+      </if>
+      <if test="nsrmc != null" >
+        NSRMC,
+      </if>
+      <if test="hj != null" >
+        HJ,
+      </if>
+      <if test="tdate != null" >
+        TDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=NUMERIC},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="dq != null" >
+        #{dq,jdbcType=VARCHAR},
+      </if>
+      <if test="djxh != null" >
+        #{djxh,jdbcType=VARCHAR},
+      </if>
+      <if test="nsrsbh != null" >
+        #{nsrsbh,jdbcType=VARCHAR},
+      </if>
+      <if test="nsrmc != null" >
+        #{nsrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="hj != null" >
+        #{hj,jdbcType=NUMERIC},
+      </if>
+      <if test="tdate != null" >
+        #{tdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertAllRkphb" parameterType="java.util.List">
+    insert into ZS_RKPHB
+    (
+    id,
+    xh,
+    dq,
+    djxh,
+    nsrsbh,
+    nsrmc,
+    hj,
+    tdate
+    ) (
+    <foreach collection="list" item="item" index= "index" separator ="UNION ALL">
+      select
+      #{item.id} as id,
+      #{item.xh,jdbcType=VARCHAR} as xh,
+      #{item.dq,jdbcType=VARCHAR} as dq,
+      #{item.djxh,jdbcType=VARCHAR} as djxh ,
+      #{item.nsrsbh,jdbcType=VARCHAR} as nsrsbh,
+      #{item.nsrmc,jdbcType=VARCHAR} as nsrmc,
+      #{item.hj} as hj,
+      #{item.tdate,jdbcType=TIMESTAMP} as tdate
+      from dual
+    </foreach>
+    )
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.chinatax.josewu.base.bean.Rkphb" >
+    update ZS_RKPHB
+    <set >
+      <if test="xh != null" >
+        XH = #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="dq != null" >
+        DQ = #{dq,jdbcType=VARCHAR},
+      </if>
+      <if test="djxh != null" >
+        DJXH = #{djxh,jdbcType=VARCHAR},
+      </if>
+      <if test="nsrsbh != null" >
+        NSRSBH = #{nsrsbh,jdbcType=VARCHAR},
+      </if>
+      <if test="nsrmc != null" >
+        NSRMC = #{nsrmc,jdbcType=VARCHAR},
+      </if>
+      <if test="hj != null" >
+        HJ = #{hj,jdbcType=NUMERIC},
+      </if>
+      <if test="tdate != null" >
+        TDATE = #{tdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.chinatax.josewu.base.bean.Rkphb" >
+    update ZS_RKPHB
+    set XH = #{xh,jdbcType=VARCHAR},
+      DQ = #{dq,jdbcType=VARCHAR},
+      DJXH = #{djxh,jdbcType=VARCHAR},
+      NSRSBH = #{nsrsbh,jdbcType=VARCHAR},
+      NSRMC = #{nsrmc,jdbcType=VARCHAR},
+      HJ = #{hj,jdbcType=NUMERIC},
+      TDATE = #{tdate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+</mapper>

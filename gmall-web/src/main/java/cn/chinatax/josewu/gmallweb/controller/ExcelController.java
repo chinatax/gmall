@@ -17,7 +17,6 @@ public class ExcelController {
     @RequestMapping(value = "excel")
     public String index(ModelMap map) {
 
-        //logger.info("这里是excelController!");
 
         map.put("title","Hello World!");
         return "excel";
@@ -25,10 +24,18 @@ public class ExcelController {
     @RequestMapping(value = "excelQyyl")
     public String qyylIndexß(ModelMap map) {
 
-        //logger.info("这里是excelController!");
+
 
         map.put("title","Hello World!企业职工基本养老保险");
         return "excelQyyl";
+    }
+    @RequestMapping(value = "excelPhb")
+    public String phbIndexß(ModelMap map) {
+
+
+
+        map.put("title","Hello World!入库排行榜");
+        return "excelPhb";
     }
     @RequestMapping(value = "error")
     public String error(ModelMap map) {
